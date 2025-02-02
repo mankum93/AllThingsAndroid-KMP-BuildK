@@ -9,7 +9,7 @@ version = "0.1.0-dev"
 
 gradlePlugin {
 
-    website = "https://allthingsandroid.com"
+    website = "https://allthingsandroid.com/buildconfig-kmp-desktop/"
     vcsUrl = "https://github.com/mankum93/AllThingsAndroid-KMP-BuildK"
 
     plugins {
