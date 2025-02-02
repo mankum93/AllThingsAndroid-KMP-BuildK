@@ -3,8 +3,8 @@ package com.allthingsandroid.kmp.plugin
 import com.allthingsandroid.kmp.plugin.util.composeExtension
 import com.allthingsandroid.kmp.plugin.util.desktopExtension
 import com.allthingsandroid.kmp.plugin.util.getJVMMainSourceSet
-import com.allthingsandroid.kmp.plugin.util.jvmTargetName
 import com.allthingsandroid.kmp.plugin.util.jvmTarget
+import com.allthingsandroid.kmp.plugin.util.jvmTargetName
 import com.allthingsandroid.kmp.plugin.util.kmpExtension
 import com.allthingsandroid.kmp.plugin.util.runTaskNowIfRequired
 import com.allthingsandroid.kmp.plugin.util.validateRequiredFields

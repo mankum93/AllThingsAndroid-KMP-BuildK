@@ -1,17 +1,28 @@
 plugins {
-    `java-gradle-plugin`
-    `maven-publish`
+    id("com.gradle.plugin-publish") version "1.2.1"
+    signing
     alias(libs.plugins.jetbrains.kotlin.jvm)
 }
 
-group = "com.allthingsandroid.buildkconfigplugin"
-version = "0.1.0"
+group = "com.allthingsandroid.buildconfig-kmp-desktop"
+version = "0.1.0-dev"
 
 gradlePlugin {
+
+    website = "https://allthingsandroid.com"
+    vcsUrl = "https://github.com/mankum93/AllThingsAndroid-KMP-BuildK"
+
     plugins {
         register("buildKConfigPlugin") {
-            id = "com.allthingsandroid.buildk-desktop"
+            id = "com.allthingsandroid.buildconfig-kmp-desktop"
             version = "0.1.0-dev"
+
+            displayName = "BuildConfig for Kotlin MultiPlatform(KMP) - desktop(JVM)"
+            description = "Generate BuildConfig for KMP - desktop(JVM) environment. Note: This plugin is not going to work with android(), iOS() or any mobile platform KMP configs, basically."
+            // Taken from,
+            // https://plugins.gradle.org/search?term=kotlin-multiplatform
+            // https://plugins.gradle.org/search?term=buildconfig
+            tags = listOf("kotlin", "kotlin-multiplatform", "multiplatform", "buildconfig", "code-generation")
             implementationClass = "com.allthingsandroid.kmp.plugin.BuildKConfigPlugin" // The fully-qualified class name of your plugin implementation
         }
     }
@@ -24,7 +35,6 @@ sourceSets {
         }
     }
 }
-
 
 dependencies {
 
@@ -48,14 +58,13 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-
 publishing {
 
     publications {
         create<MavenPublication>("gradlePlugin") {
             from(components["java"]) // Use the Java component (since Gradle plugins are compiled into a JAR)
             groupId = "com.allthingsandroid"
-            artifactId = "buildkconfig-desktop"
+            artifactId = "buildconfig-kmp-desktop"
             version = "0.1.0-dev"
         }
     }
@@ -64,3 +73,8 @@ publishing {
         mavenLocal() // Publishes to ~/.m2/repository
     }
 }
+
+signing {
+    sign(publishing.publications["gradlePlugin"])
+}
+
