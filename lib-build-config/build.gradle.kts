@@ -74,7 +74,8 @@ publishing {
     }
 }
 
-signing {
+// Required for publishing to Gradle Plugin Portal.
+/*signing {
     sign(publishing.publications["gradlePlugin"])
-}
+}*/
 

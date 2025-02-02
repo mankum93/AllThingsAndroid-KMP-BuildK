@@ -11,7 +11,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-    id("com.allthingsandroid.buildk-desktop").version("0.1.0-dev")
+    id("com.allthingsandroid.buildconfig-kmp-desktop").version("0.1.0-dev")
 }
 
 buildKConfig {
