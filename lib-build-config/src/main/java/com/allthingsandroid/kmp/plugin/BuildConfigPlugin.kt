@@ -131,13 +131,13 @@ class BuildKConfigPlugin : Plugin<Project> {
             val kmpExtension = it.kmpExtension()
 
             if(kmpExtension == null){
-                println("BuildKConfigPlugin: KMP extension not found. Plugin couldn't be applied!")
+                System.err.println("BuildKConfigPlugin: KMP extension not found. Plugin couldn't be applied!")
                 return@afterEvaluate
             }
 
             val jvmTarget = kmpExtension.jvmTarget()
             if(jvmTarget == null){
-                println("BuildKConfigPlugin: jvm target not defined. Plugin couldn't be applied!")
+                System.err.println("BuildKConfigPlugin: jvm target not defined. Plugin couldn't be applied!")
             }
 
             kmpExtension.configureBuildConfigTask(project)
@@ -169,13 +169,13 @@ class BuildKConfigPlugin : Plugin<Project> {
             val composeDesktopExtension = composeExtension?.desktopExtension()
 
             if(composeExtension == null){
-                println("BuildKConfigPlugin: The plugin cannot be applied. No compose extension - the 'compose{}' block defined for your KMP project!")
+                System.err.println("BuildKConfigPlugin: The plugin cannot be applied. No compose extension - the 'compose{}' block defined for your KMP project!")
                 it.isTaskInputValid = false
                 return@register
             }
 
             if(composeDesktopExtension == null){
-                println("BuildKConfigPlugin: The plugin cannot be applied. No desktop extension - the 'compose{ desktop{ .. }}' block defined for your KMP project!")
+                System.err.println("BuildKConfigPlugin: The plugin cannot be applied. No desktop extension - the 'compose{ desktop{ .. }}' block defined for your KMP project!")
                 it.isTaskInputValid = false
                 return@register
             }
@@ -185,12 +185,12 @@ class BuildKConfigPlugin : Plugin<Project> {
             val distributablePackageVersion = composeDesktopExtension.application.nativeDistributions.packageVersion
 
             if(mainClass == null){
-                println("BuildKConfigPlugin: The plugin cannot be applied. Have you defined the 'mainClass' for the desktop config?")
+                System.err.println("BuildKConfigPlugin: The plugin cannot be applied. Have you defined the 'mainClass' for the desktop config?")
                 it.isTaskInputValid = false
                 return@register
             }
             if(distributablePackageName == null){
-                println("BuildKConfigPlugin: The plugin cannot be applied. Have you defined the 'packageName' for the desktop config?")
+                System.err.println("BuildKConfigPlugin: The plugin cannot be applied. Have you defined the 'packageName' for the desktop config?")
                 it.isTaskInputValid = false
                 return@register
             }
