@@ -59,20 +59,7 @@ buildKConfig {
     environment = environmentDevelopment
     applicationVersion = "0.1.0"
 
-    val applicationVersionComprehensive = applicationId.let {
-        val suffixAdditionalForVersion = "_" + when(environment) {
-            environmentDevelopment, environmentQA, environmentSandbox ->
-                LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy-HH:mm:ss"))
-            else -> ""
-        }
-        // Formula for 'app version comprehensive' calculation,
-        /*
-            application-version_environment-short-form_suffix-for-version
-        */
-        "${applicationVersion}_${environmentsProperties[environment]!![ENVIRONMENT_SHORT_FORM]!!}${suffixAdditionalForVersion}"
-    }
-
-    // Additional fields
+    // Custom fields
 
     fields {
         field("applicationVersionComprehensive", applicationVersionComprehensive)
@@ -186,7 +173,6 @@ object BuildConfig {
     val applicationVersion = "0.1.0"
     
     object Fields {
-        val applicationVersionComprehensive = "0.1.0_dev_02-02-2025-20:55:24"
         val toStringExample = "java.lang.Object@6da07253"
         val nullExample = null
         val numberExample = 123
